@@ -11,7 +11,7 @@ int Recursive(int time,int payment) {
 	}
 	return(Recursive(time-1,payment*2-50));
 }
-//Ä‹AŠÖ”‚Å‹‹‚ª1ŠÔ‚²‚Æ‚ÉŒ»İ‚Ì‹‹‚Ì“ñ”{‚Ì-50‰~‚ª‹‹‚É‚È‚éŠÖ”‚ğì¬‚µ‚½‚¢B
+
 
 
 int main() {

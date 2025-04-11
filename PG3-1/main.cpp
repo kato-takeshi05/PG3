@@ -17,14 +17,6 @@ float min<float>(float a, float b) {
 	}
 }
 
-template<>
-double min<double>(double a, double b) {
-	if (a > b) {
-		return static_cast<double>(b);
-	} else {
-		return static_cast<double>(a);
-	}
-}
 
 
 int main() {

@@ -1,17 +1,24 @@
 #include<stdio.h>
-int Recursive(int n) {
-	if (n <= 1) {
+
+int Recursive(int time,int fast) {
+	if (time <= 1) {
 		return(100);
 	}
+	
+	int result(fast * 2 - 50);
 
-	return(100+(50)*Recursive(n - 1));
+	return(result+(Recursive(time-1,result)));
 }
-int main() {
-	int workTime = 50;
-	int n = 3;
-	int result;
 
-	result = Recursive(n);
-	printf("%d‚ÌŠKæ=%d", n, result);
+int main() {
+	int workTime = 3;
+	int fast = 100;
+	int commonResult;
+	int recursiveResult;
+
+	commonResult = 1072*workTime;
+	recursiveResult = Recursive(workTime,fast);
+	printf("%d\n",commonResult);
+	printf("%d\n",recursiveResult);
 	return 0;
 }

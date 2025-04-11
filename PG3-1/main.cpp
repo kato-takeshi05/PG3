@@ -30,10 +30,11 @@ char min<char>(char char1, char char2) {
 
 
 int main() {
+	
 	printf("%d\n", min<int>(114, 514));
-	printf("%f\n", min<float>(11.4, 51.4));	
-	printf("%lf\n", min<double>(11.4514, 19.1919));	
-	printf("%c\n", min<char>('a','11'));
+	printf("%f\n", min<float>(11.4f, 51.4f));	
+	printf("%lf\n", min<double>(11.4514f, 19.1919f));	
+	printf("%c\n", min<char>('a','b'));
 	//
 	return 0;
 }

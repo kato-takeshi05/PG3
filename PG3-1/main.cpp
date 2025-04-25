@@ -55,7 +55,10 @@ int main(int argc,const char *argv[]) {
 
     PFunc p;
     p = DispResult;
-    setTimeout(p, 3);
+
+    setTimeout([](int* s) {
+        printf("\n\nパカッ\n\n");
+    }, 3);
 
     printf("出た目:%d\n", dice);
     if (insert == 2) {

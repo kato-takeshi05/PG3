@@ -8,6 +8,12 @@ typedef void (*PFunc)(int*);
 void DispResult(int* s) {
     printf("\n\nパカッ\n\n");
 }
+
+/// <summary>
+/// コールバック関数を用いて時間を止める
+/// </summary>
+/// <param name="p">コールバック関数</param>
+/// <param name="second">止める秒数</param>
 void setTimeout(PFunc p, int second) {
     Sleep(second * 1000);
 

@@ -3,6 +3,7 @@
 #include <time.h>
 #include <windows.h>
 
+//コールバック関数
 typedef void (*PFunc)(int*);
 
 void DispResult(int* s) {
@@ -21,9 +22,18 @@ void setTimeout(PFunc p, int second) {
 }
 
 
+/// <summary>
+/// ６面サイコロを振る
+/// </summary>
+/// <returns>出た目</returns>
 int rollDice() {
     return rand() % 6 + 1;
 }
+/// <summary>
+/// 数字が偶数かどうか判断する
+/// </summary>
+/// <param name="number">判断する数字</param>
+/// <returns>答え</returns>
 int even(int number) {
     if (number % 2 == 0) {
         printf("正解");
@@ -32,7 +42,11 @@ int even(int number) {
     }
     return 0;
 }
-
+/// <summary>
+/// 数字が奇数かどうか判断する
+/// </summary>
+/// <param name="number">判断する数字</param>
+/// <returns>答え</returns>
 int odd(int number) {
     if (number % 2 != 0) {
         printf("正解");
@@ -41,6 +55,7 @@ int odd(int number) {
     }
     return 0;
 }
+
 
 int main(int argc,const char *argv[]) {
     srand(time(NULL));
@@ -62,9 +77,12 @@ int main(int argc,const char *argv[]) {
     PFunc p;
     p = DispResult;
 
+    //ラムダ式を使って関数の呼び出し
     setTimeout([](int* s) {
         printf("\n\nパカッ\n\n");
     }, 3);
+
+
 
     printf("出た目:%d\n", dice);
     if (insert == 2) {

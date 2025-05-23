@@ -1,0 +1,10 @@
+#include <stdio.h>
+#include "Ball.h"
+
+Ball::Ball() {
+    printf("ã‡ã Ç™ê∂ê¨Ç≥ÇÍÇ‹ÇµÇΩ\n");
+}
+
+Ball::~Ball() {
+    printf("ã‡ã Ç™îjâÛÇ≥ÇÍÇ‹ÇµÇΩ\n");
+}

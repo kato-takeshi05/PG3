@@ -1,23 +1,26 @@
 #include<stdio.h>
-template <typename T>
-
-class Min {
-private:
-    T a, b;
-
-public:
-    
-    Min(T x, T y) : a(x), b(y) {}
-
-    
-    T Min() {
-        return (a < b) ? a : b;
-    }
-};
+#include "Man.h"
+#include "Penis.h"
+#include "Ball.h"
 
 int main() {
+    
+    Man* man_parts[3];
 
-   
+
+    for (int i = 0; i < 3; i++) {
+        if (i < 1)
+            man_parts[i] = new Penis;
+        else
+            man_parts[i] = new Ball;
+
+    }
+
+    
+
+    for (int i = 0; i < 3; i++) {
+        delete man_parts[i];
+    }
 
     return 0;
 }

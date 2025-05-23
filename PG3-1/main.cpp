@@ -1,5 +1,9 @@
 #include <stdio.h>
-
+/// <summary>
+/// テンプレート
+/// </summary>
+/// <typeparam name="T1">比較する数字１</typeparam>
+/// <typeparam name="T2">比較する数字2</typeparam>
 template <typename T1, typename T2>
 class Comparator {
 public:
@@ -7,7 +11,10 @@ public:
     T2 b;
 
     Comparator(T1 a, T2 b) : a(a), b(b) {}
-
+    /// <summary>
+    /// AとＢの値を比較して小さいほうを返す
+    /// </summary>
+    /// <returns>小さい値</returns>
     auto Min() -> decltype((a < b) ? a : b) {
         return (a < b) ? a : b;
     }

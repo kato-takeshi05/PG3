@@ -1,10 +1,23 @@
 #include<stdio.h>
-#include"Enemy.h"
+template <typename T>
+
+class Min {
+private:
+    T a, b;
+
+public:
+    
+    Min(T x, T y) : a(x), b(y) {}
+
+    
+    T Min() {
+        return (a < b) ? a : b;
+    }
+};
 
 int main() {
-	Enemy enemy;
-	enemy.Update();
 
-	
-	return 0;
+   
+
+    return 0;
 }

@@ -1,26 +1,17 @@
-#include<stdio.h>
-#include "Man.h"
-#include "Penis.h"
-#include "Ball.h"
+#include "IShape.h"
+#include "Circle.h"
+#include "Rectangle.h"
 
-int main() {
+int main()
+{
+    Circle circle(5.0f);       
+    RectAngle rect(4.0f, 3.0f);
 
-    Man* man_parts[3];
+    circle.Draw();
+    circle.Size();
 
-
-    for (int i = 0; i < 3; i++) {
-        if (i < 1)
-            man_parts[i] = new Penis;
-        else
-            man_parts[i] = new Ball;
-
-    }
-
-
-
-    for (int i = 0; i < 3; i++) {
-        delete man_parts[i];
-    }
+    rect.Draw();
+    rect.Size();
 
     return 0;
 }

@@ -40,11 +40,10 @@ void printThread3() {
 int main() {
     //スレッドを生成してそれぞれの関数を実行
     std::thread t1(printThread1);
-    std::thread t2(printThread2);
-    std::thread t3(printThread3);
-
     t1.join();
+    std::thread t2(printThread2);
     t2.join();
+    std::thread t3(printThread3);
     t3.join();
 
     return 0;

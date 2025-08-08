@@ -1,50 +1,28 @@
 #include <iostream>
-#include <thread>
-#include <mutex>
-#include <condition_variable>
-
-std::mutex mtx;
-std::condition_variable cv;
-int step = 1;
-
-/// <summary>
-/// thread1を出力する関数
-/// </summary>
-void printThread1() {
-    std::unique_lock<std::mutex> lock(mtx);
-    std::cout << "thread1\n";
-    step = 2;
-    cv.notify_all(); 
-}
-
-/// <summary>
-/// thread2を出力する関数
-/// </summary>
-void printThread2() {
-    std::unique_lock<std::mutex> lock(mtx);
-    cv.wait(lock, [] { return step == 2; }); 
-    std::cout << "thread2\n";
-    step = 3;
-    cv.notify_all();
-}
-
-/// <summary>
-/// thread3を出力する関数
-/// </summary>
-void printThread3() {
-    std::unique_lock<std::mutex> lock(mtx);
-    cv.wait(lock, [] { return step == 3; }); 
-    std::cout << "thread3\n";
-}
+#include <string>
+#include <chrono>
 
 int main() {
-    //スレッドを生成してそれぞれの関数を実行
-    std::thread t1(printThread1);
-    t1.join();
-    std::thread t2(printThread2);
-    t2.join();
-    std::thread t3(printThread3);
-    t3.join();
+    //初期化
+    std::string original(1'000'000, 'a');
+
+    //コピー
+    auto startCopy = std::chrono::high_resolution_clock::now();
+    std::string copied = original;  // コピー
+    auto endCopy = std::chrono::high_resolution_clock::now();
+    auto copyDuration = std::chrono::duration_cast<std::chrono::microseconds>(endCopy - startCopy).count();
+
+    //移動
+    auto startMove = std::chrono::high_resolution_clock::now();
+    std::string moved = std::move(original);  //右辺値参照
+    auto endMove = std::chrono::high_resolution_clock::now();
+    auto moveDuration = std::chrono::duration_cast<std::chrono::microseconds>(endMove - startMove).count();
+
+    //結果
+    std::cout << "100,000文字を移動とコピーで比較しました。" << std::endl;
+    std::cout << "コピー： " << copyDuration << "μs" << std::endl;
+    std::cout << "移動： " << moveDuration << "μs" << std::endl;
+    std::cin.get();
 
     return 0;
 }
